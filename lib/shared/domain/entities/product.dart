@@ -20,18 +20,4 @@ class Product {
     this.isNew = true,
     required this.createdAt,
   });
-
-  factory Product.fromJson(Map<String, dynamic> json) {
-    return Product(
-      name: json['name'],
-      price: json['price'],
-      oldPrice: json['oldPrice'],
-      image: json['image'],
-      installmentQuantity: json['installmentQuantity'],
-      installmentPrice: json['installmentPrice'],
-      discount: json['discount'],
-      isNew: json['isNew'],
-      createdAt: DateTime.parse(json['createdAt']),
-    );
-  }
 }

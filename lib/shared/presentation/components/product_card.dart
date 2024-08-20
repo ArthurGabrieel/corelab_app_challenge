@@ -1,5 +1,5 @@
 import 'package:corelab_app_challenge/core/config/theme/app_theme.dart';
-import 'package:corelab_app_challenge/core/domain/models/product.dart';
+import 'package:corelab_app_challenge/shared/domain/entities/product.dart';
 import 'package:flutter/material.dart';
 
 class ProductCard extends StatelessWidget {
