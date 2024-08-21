@@ -9,7 +9,7 @@ class ProductModel extends Product {
     required int installmentQuantity,
     required double installmentPrice,
     required int discount,
-    bool isNew = true,
+    required bool isNew,
     required DateTime createdAt,
   }) : super(
           name: name,

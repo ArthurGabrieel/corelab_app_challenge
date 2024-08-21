@@ -1,16 +1,24 @@
 import 'package:corelab_app_challenge/core/config/routes/app_routes.dart';
+import 'package:corelab_app_challenge/core/config/routes/navigator_keys.dart';
 import 'package:corelab_app_challenge/core/config/theme/app_theme.dart';
+import 'package:corelab_app_challenge/core/service_locator.dart';
+import 'package:corelab_app_challenge/features/home/presentation/bloc/home_bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AppWidget extends StatelessWidget {
   const AppWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      theme: AppTheme.light,
-      routes: AppRoutes.routes,
+    return BlocProvider(
+      create: (context) => sl<HomeBloc>(),
+      child: MaterialApp(
+        navigatorKey: NavigatorKeys.mainNavigatorKey,
+        debugShowCheckedModeBanner: false,
+        theme: AppTheme.light,
+        routes: AppRoutes.routes,
+      ),
     );
   }
 }

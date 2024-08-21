@@ -42,6 +42,28 @@ class AppTheme {
         thickness: 1,
         space: 0,
       ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        enableFeedback: false,
+        selectedLabelStyle: TextStyle(
+          color: primaryColor,
+          fontSize: 10,
+        ),
+        unselectedLabelStyle: TextStyle(
+          color: greyColor,
+          fontSize: 10,
+        ),
+        selectedIconTheme: IconThemeData(
+          size: 25.0,
+          color: primaryColor,
+        ),
+        unselectedIconTheme: IconThemeData(
+          size: 25.0,
+          color: greyColor,
+        ),
+        type: BottomNavigationBarType.fixed,
+      ),
     );
   }
 }

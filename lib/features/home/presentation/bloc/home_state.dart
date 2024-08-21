@@ -12,12 +12,16 @@ final class HomeInitial extends HomeState {}
 final class HomeLoading extends HomeState {}
 
 final class HomeLoaded extends HomeState {
-  final List<Product> products;
+  final List<Product> productsCreatedToday;
+  final List<Product> productsCreatedYesterday;
 
-  const HomeLoaded(this.products);
+  const HomeLoaded({
+    required this.productsCreatedToday,
+    required this.productsCreatedYesterday,
+  });
 
   @override
-  List<Object> get props => [products];
+  List<Object> get props => [productsCreatedToday, productsCreatedYesterday];
 }
 
 final class HomeError extends HomeState {

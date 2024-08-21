@@ -1,4 +1,5 @@
 import 'package:corelab_app_challenge/core/config/routes/app_routes.dart';
+import 'package:corelab_app_challenge/core/config/routes/navigator_keys.dart';
 import 'package:corelab_app_challenge/core/config/theme/app_theme.dart';
 import 'package:flutter/material.dart';
 
@@ -21,7 +22,11 @@ class _CustomAppBarState extends State<CustomAppBar> {
         child: Padding(
           padding: const EdgeInsets.all(8),
           child: InkWell(
-            onTap: () => Navigator.pushNamed(context, AppRoutes.search),
+            onTap: () {
+              Navigator.pushNamed(
+                  NavigatorKeys.homeNavigatorKey.currentContext ?? context,
+                  AppRoutes.search);
+            },
             child: Ink(
               child: Container(
                 decoration: const BoxDecoration(

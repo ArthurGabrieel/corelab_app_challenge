@@ -17,7 +17,7 @@ class Product {
     required this.installmentQuantity,
     required this.installmentPrice,
     required this.discount,
-    this.isNew = true,
+    required this.isNew,
     required this.createdAt,
   });
 }

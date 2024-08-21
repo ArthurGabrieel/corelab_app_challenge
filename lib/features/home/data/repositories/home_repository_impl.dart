@@ -11,10 +11,21 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.dataSource);
 
   @override
-  Future<Either<Failure, List<Product>>> fetchProducts() async {
+  Future<Either<Failure, List<Product>>> fetchTodayProducts() async {
     try {
-      final products = await dataSource.fetchProducts();
-      return Right(products);
+      final productsCreatedToday = await dataSource.fetchTodayProducts();
+      return Right(productsCreatedToday);
+    } on ServerException {
+      return const Left(ServerFailure('Error fetching products'));
+    }
+  }
+
+  @override
+  Future<Either<Failure, List<Product>>> fetchYesterdayProducts() async {
+    try {
+      final productsCreatedYesterday =
+          await dataSource.fetchYesterdayProducts();
+      return Right(productsCreatedYesterday);
     } on ServerException {
       return const Left(ServerFailure('Error fetching products'));
     }
