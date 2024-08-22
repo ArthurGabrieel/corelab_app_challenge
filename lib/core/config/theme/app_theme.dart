@@ -42,6 +42,23 @@ class AppTheme {
         thickness: 1,
         space: 0,
       ),
+      inputDecorationTheme: InputDecorationTheme(
+        filled: true,
+        fillColor: Colors.white,
+        border: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(
+            color: greyColor.withOpacity(0.3),
+          ),
+        ),
+        focusedBorder: const OutlineInputBorder(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+          borderSide: BorderSide(
+            color: primaryColor,
+          ),
+        ),
+        contentPadding: const EdgeInsets.symmetric(horizontal: 12),
+      ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
         elevation: 0,
@@ -63,6 +80,12 @@ class AppTheme {
           color: greyColor,
         ),
         type: BottomNavigationBarType.fixed,
+      ),
+      pageTransitionsTheme: const PageTransitionsTheme(
+        builders: {
+          TargetPlatform.android: ZoomPageTransitionsBuilder(),
+          TargetPlatform.iOS: CupertinoPageTransitionsBuilder(),
+        },
       ),
     );
   }

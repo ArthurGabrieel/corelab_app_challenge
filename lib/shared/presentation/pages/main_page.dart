@@ -14,14 +14,22 @@ class _MainPageState extends State<MainPage> {
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
-    setState(() => _selectedIndex = index);
+    if (index == 0 || index == 1) {
+      setState(() => _selectedIndex = index);
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(
+          content: Text('Página em desenvolvimento'),
+        ),
+      );
+    }
   }
 
   Widget _buildPageTransition(Widget child, Animation<double> animation) {
     return FadeTransition(
       opacity: animation,
       child: ScaleTransition(
-        scale: Tween<double>(begin: 0.95, end: 1.0).animate(animation),
+        scale: Tween<double>(begin: 0.90, end: 1.0).animate(animation),
         child: child,
       ),
     );

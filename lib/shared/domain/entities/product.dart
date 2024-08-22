@@ -2,6 +2,7 @@ class Product {
   final String name;
   final double price;
   final double? oldPrice;
+  final String category;
   final String image;
   final int installmentQuantity;
   final double installmentPrice;
@@ -13,6 +14,7 @@ class Product {
     required this.name,
     required this.price,
     this.oldPrice,
+    required this.category,
     required this.image,
     required this.installmentQuantity,
     required this.installmentPrice,
