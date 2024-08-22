@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
 import 'package:corelab_app_challenge/core/usecase/usecase.dart';
 import 'package:corelab_app_challenge/features/search/domain/usecases/get_recents_searchs_usecase.dart';
-import 'package:corelab_app_challenge/features/search/domain/usecases/search_usecase.dart';
 import 'package:corelab_app_challenge/features/search/domain/usecases/save_search_usecase.dart';
+import 'package:corelab_app_challenge/features/search/domain/usecases/search_usecase.dart';
 import 'package:corelab_app_challenge/shared/domain/entities/product.dart';
 import 'package:equatable/equatable.dart';
 
@@ -16,8 +16,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     required SaveSearchUsecase saveSearch,
   }) : super(SearchInitial()) {
     on<GetRecentSearchs>((event, emit) async {
-      final result = await getRecentsSearchs(NoParams());
+      emit(SearchLoading());
 
+      final result = await getRecentsSearchs(NoParams());
       result.fold(
         (failure) => emit(SearchError(failure.message)),
         (recents) => emit(RecentSearchsLoaded(recents)),
@@ -25,8 +26,9 @@ class SearchBloc extends Bloc<SearchEvent, SearchState> {
     });
 
     on<SearchStarted>((event, emit) async {
-      final result = await search(event.query);
+      emit(SearchLoading());
 
+      final result = await search(event.query);
       result.fold(
         (failure) => emit(SearchError(failure.message)),
         (products) => emit(SearchLoaded(products)),

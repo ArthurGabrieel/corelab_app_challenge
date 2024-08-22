@@ -3,6 +3,7 @@ import 'package:corelab_app_challenge/features/search/presentation/components/em
 import 'package:corelab_app_challenge/features/search/presentation/components/products_search.dart';
 import 'package:corelab_app_challenge/features/search/presentation/components/recent_searchs_list.dart';
 import 'package:corelab_app_challenge/features/search/presentation/components/search_app_bar.dart';
+import 'package:corelab_app_challenge/shared/presentation/components/product_card_shimmer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -36,22 +37,18 @@ class _SearchPageState extends State<SearchPage> {
       appBar: SearchAppBar(textController: controller),
       body: BlocBuilder<SearchBloc, SearchState>(
         builder: (context, state) {
-          if (state is SearchInitial) {
-            return const Center(child: CircularProgressIndicator());
+          if (state is SearchInitial || state is SearchLoading) {
+            return const ProductCardShimmer(title: 'Buscando...',);
           } else if (state is RecentSearchsLoaded) {
             return RecentSearchsList(
-              recentSearchs: state.recentSearchs,
-              controller: controller,
-            );
+                recentSearchs: state.recentSearchs, controller: controller);
           } else if (state is SearchLoaded) {
             if (state.products.isEmpty) {
               return EmptySearch(search: controller.text);
             }
             return ProductsSearch(products: state.products);
           } else {
-            return const Center(
-              child: Text('Error'),
-            );
+            return const EmptySearch(search: '');
           }
         },
       ),
