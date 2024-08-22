@@ -19,7 +19,15 @@ class _MainPageState extends State<MainPage> {
     } else {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(
-          content: Text('Página em desenvolvimento'),
+          backgroundColor: Colors.red,
+          content: Text(
+            'Serviço indisponível no momento',
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w500,
+            ),
+          ),
         ),
       );
     }
