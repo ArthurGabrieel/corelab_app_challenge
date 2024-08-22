@@ -18,6 +18,15 @@ class _SearchAppBarState extends State<SearchAppBar> {
   bool isSearching = false;
 
   @override
+  void initState() {
+    super.initState();
+
+    widget.textController.addListener(() {
+      setState(() => isSearching = widget.textController.text.isNotEmpty);
+    });
+  }
+
+  @override
   Widget build(BuildContext context) {
     return AppBar(
       title: ConstrainedBox(
@@ -25,7 +34,6 @@ class _SearchAppBarState extends State<SearchAppBar> {
         child: TextField(
           controller: widget.textController,
           onChanged: (value) {
-            setState(() => isSearching = widget.textController.text.isNotEmpty);
             if (value.isEmpty) {
               context.read<SearchBloc>().add(GetRecentSearchs());
             } else {

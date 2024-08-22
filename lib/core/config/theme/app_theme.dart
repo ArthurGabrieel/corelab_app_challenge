@@ -61,7 +61,7 @@ class AppTheme {
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         backgroundColor: Colors.white,
-        elevation: 0,
+        elevation: 15,
         enableFeedback: false,
         selectedLabelStyle: TextStyle(
           color: primaryColor,

@@ -4,13 +4,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class RecentSearchsList extends StatelessWidget {
-  const RecentSearchsList({super.key, required this.recentSearchs});
+  const RecentSearchsList({
+    super.key,
+    required this.recentSearchs,
+    required this.controller,
+  });
 
   final List<String> recentSearchs;
+  final TextEditingController controller;
 
   Widget _buildListTile(BuildContext context, String search) {
     return InkWell(
-      onTap: () => context.read<SearchBloc>().add(SearchStarted(search)),
+      onTap: () {
+        context.read<SearchBloc>().add(SearchStarted(search));
+        controller.text = search;
+      },
       child: Column(
         children: [
           ListTile(
